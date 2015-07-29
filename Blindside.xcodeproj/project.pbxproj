@@ -435,6 +435,7 @@
 		343267161BAA2A9C005F2D7A /* Blindside.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Blindside.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		344DA5171BAB042E004270AD /* Blindside-tvOS BuildTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Blindside-tvOS BuildTest.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		344DA5271BAB042E004270AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		34244A331B4BBCC4008A0DF0 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
 		3453B88F1B4F7AF700026E19 /* BSNullabilityCompat.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BSNullabilityCompat.h; sourceTree = "<group>"; };
 		347C24621BA0CEF8009BE82F /* BSUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BSUtils.h; sourceTree = "<group>"; };
 		347C246F1BA0D16C009BE82F /* BSInjectorSwiftSpec.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BSInjectorSwiftSpec.mm; sourceTree = "<group>"; };
@@ -558,6 +559,7 @@
 		29CAC6D8150292AD00731862 = {
 			isa = PBXGroup;
 			children = (
+				34244A331B4BBCC4008A0DF0 /* MyPlayground.playground */,
 				29997A751502C38400C12110 /* Source */,
 				29997AB31505CE7800C12110 /* Headers */,
 				29CAC7041502932000731862 /* Specs */,
