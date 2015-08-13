@@ -375,6 +375,59 @@ describe(@"BSInjector", ^{
             });
         });
     });
+
+    context(@"when there is a parent injector", ^{
+        __block BSInjectorImpl *childInjector;
+        id instanceInChild = @"child_instance";
+        id instanceInParent = @"parent_instance";
+
+        beforeEach(^{
+            childInjector = [[BSInjectorImpl alloc] initWithParentInjector:injector];
+        });
+
+        it(@"can bind an instance to a class without using the parent", ^{
+            [childInjector bind:@"foo" toInstance:instanceInChild];
+            [childInjector getInstance:@"foo"] should be_same_instance_as(instanceInChild);
+        });
+
+        it(@"should not use the parent if both injectors have a binding on the same key", ^{
+            [injector bind:@"foo" toInstance:instanceInParent];
+            [childInjector bind:@"foo" toInstance:instanceInChild];
+            [childInjector getInstance:@"foo"] should be_same_instance_as(instanceInChild);
+        });
+
+        it(@"should use the parent if only the parent injector has the key", ^{
+            [injector bind:@"foo" toInstance:instanceInParent];
+            [childInjector getInstance:@"foo"] should be_same_instance_as(instanceInParent);
+        });
+
+        it(@"should use the parent if only the parent injector has the key even if the key is a class", ^{
+            [injector bind:[NSObject class] toInstance:instanceInParent];
+            [childInjector getInstance:[NSObject class]] should be_same_instance_as(instanceInParent);
+        });
+
+        describe(@"singleton scoping", ^{
+            it(@"should use the child if the key is bound to a scope in the child injector", ^{
+                [injector bind:[NSObject class] toInstance:instanceInParent];
+                [childInjector bind:[NSObject class] withScope:[BSSingleton scope]];
+                [childInjector getInstance:[NSObject class]] should_not be_same_instance_as(instanceInParent);
+            });
+
+            it(@"should apply the scoping only within the context of the injector where binding occurred", ^{
+                [injector bind:[NSObject class] withScope:[BSSingleton scope]];
+                [childInjector bind:[NSObject class] withScope:[BSSingleton scope]];
+
+                id obj1 = [injector getInstance:[NSObject class]];
+                id obj2 = [injector getInstance:[NSObject class]];
+                id obj3 = [childInjector getInstance:[NSObject class]];
+                id obj4 = [childInjector getInstance:[NSObject class]];
+
+                obj1 should be_same_instance_as(obj2);
+                obj3 should be_same_instance_as(obj4);
+                obj1 should_not be_same_instance_as(obj3);
+            });
+        });
+    });
 });
 
 SPEC_END

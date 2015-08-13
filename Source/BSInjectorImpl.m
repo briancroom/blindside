@@ -20,6 +20,7 @@ static NSString *const BSInFlightKeysDictKey = @"BSInFlightKeysDictKey";
 
 @interface BSInjectorImpl ()
 
+@property(nonatomic, strong) id<BSInjector> parentInjector;
 @property(nonatomic, strong) NSMutableDictionary *providers;
 @property(nonatomic, strong) NSMutableDictionary *scopes;
 
@@ -32,10 +33,15 @@ static NSString *const BSInFlightKeysDictKey = @"BSInFlightKeysDictKey";
 
 @synthesize providers = _providers, scopes = _scopes;
 
-- (id)init {
+- (instancetype)init {
+    return [self initWithParentInjector:nil];
+}
+
+- (instancetype)initWithParentInjector:(id<BSInjector>)parentInjector {
     if (self = [super init]) {
-        self.providers = [NSMutableDictionary dictionary];
-        self.scopes = [NSMutableDictionary dictionary];
+        _parentInjector = parentInjector;
+        _providers = [NSMutableDictionary dictionary];
+        _scopes = [NSMutableDictionary dictionary];
     }
     return self;
 }
@@ -70,6 +76,10 @@ static NSString *const BSInFlightKeysDictKey = @"BSInFlightKeysDictKey";
 
 - (void)bind:(id)key withScope:(id<BSScope>)scope {
     [self setScope:scope forKey:key];
+
+    if (![self explicitlyBoundProviderForKey:key]) {
+        [self bind:key toProvider:[self synthesizedProviderForKey:key]];
+    }
 }
 
 - (void)injectInjector:(id)object {
@@ -98,9 +108,17 @@ static NSString *const BSInFlightKeysDictKey = @"BSInFlightKeysDictKey";
 }
 
 - (id)getInstance:(id)key withArgArray:(NSArray *)args {
-    id<BSProvider> provider = [self providerForKey:key];
-    id<BSScope> scope = [self scopeForKey:key];
+    id<BSProvider> provider = [self explicitlyBoundProviderForKey:key];
 
+    if (!provider) {
+        if (self.parentInjector) {
+            return [self.parentInjector getInstance:key withArgArray:args];
+        } else {
+            provider = [self synthesizedProviderForKey:key];
+        }
+    }
+
+    id<BSScope> scope = [self scopeForKey:key];
     if (provider && scope) {
         provider = [scope scope:provider];
     }
@@ -141,24 +159,26 @@ static NSString *const BSInFlightKeysDictKey = @"BSInFlightKeysDictKey";
     [self.providers removeObjectForKey:[self internalKey:key]];
 }
 
-- (id<BSProvider>)providerForKey:(id)key {
-    id<BSProvider> provider = [self.providers objectForKey:[self internalKey:key]];
-    
-    if (provider == nil && [key respondsToSelector:@selector(bsInitializer)]) {
+- (id<BSProvider>)explicitlyBoundProviderForKey:(id)key {
+    return [self.providers objectForKey:[self internalKey:key]];
+}
+
+- (id<BSProvider>)synthesizedProviderForKey:(id)key {
+    if ([key respondsToSelector:@selector(bsInitializer)]) {
         BSInitializer *initializer = [key performSelector:@selector(bsInitializer)];
         if (initializer != nil) {
-            provider = [BSInitializerProvider providerWithInitializer:initializer];
+            return [BSInitializerProvider providerWithInitializer:initializer];
         }
     }
-    
-    if (provider == nil && [key respondsToSelector:@selector(bsCreateWithArgs:injector:)]) {
+
+    if ([key respondsToSelector:@selector(bsCreateWithArgs:injector:)]) {
         __weak id this = self;
-        provider = [BSBlockProvider providerWithBlock:^id(NSArray *args, id<BSInjector> injector) {
+        return [BSBlockProvider providerWithBlock:^id(NSArray *args, id<BSInjector> injector) {
             return [key performSelector:@selector(bsCreateWithArgs:injector:) withObject:args withObject:this];
         }];
     }
-    
-    return provider;
+
+    return nil;
 }
 
 - (void)setScope:(id<BSScope>)scope forKey:(id)key {
