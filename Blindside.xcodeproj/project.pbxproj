@@ -2063,6 +2063,7 @@
 				344DA5291BAB042E004270AD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		34A18C001B9F887300A65DB3 /* Build configuration list for PBXNativeTarget "Blindside-watchOS BuildTest Extension" */ = {
 			isa = XCConfigurationList;

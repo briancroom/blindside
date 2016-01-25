@@ -211,19 +211,21 @@ static NSString *const BSInFlightKeysDictKey = @"BSInFlightKeysDictKey";
     [[self inFlightKeys] removeAllObjects];
 }
 
-- (NSMutableOrderedSet *)inFlightKeys {
-    NSMutableOrderedSet *set = [[NSThread currentThread].threadDictionary objectForKey:BSInFlightKeysDictKey];
+- (id)inFlightKeys {
+    /*NSMutableOrderedSet *set = [[NSThread currentThread].threadDictionary objectForKey:BSInFlightKeysDictKey];
     if (!set) {
         set = [NSMutableOrderedSet orderedSet];
         [[NSThread currentThread].threadDictionary setObject:set forKey:BSInFlightKeysDictKey];
     }
-    return set;
+    return set;*/
+    return nil;
 }
 
 - (NSString *)cyclicDependencyChainDescription {
-    NSOrderedSet *keys = [self inFlightKeys];
+    /*NSOrderedSet *keys = [self inFlightKeys];
     NSArray *chain = [[keys array] arrayByAddingObject:[keys objectAtIndex:0]];
-    return [chain componentsJoinedByString:@" -> "];
+    return [chain componentsJoinedByString:@" -> "];*/
+    return nil;
 }
 
 @end

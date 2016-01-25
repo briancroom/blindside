@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
  * @param injector The BSInjector invoking the block. Can be used by blocks that need
  *        it and ignored by blocks that don't.
  */
-typedef __nonnull id(^BSBlock)(NSArray *args, id<BSInjector> injector);
+typedef _Nonnull id(^BSBlock)(NSArray *args, id<BSInjector> injector);
 
 /**
  * Used internally by Blindside when a key is bound to a block. BSBlockProvider 
