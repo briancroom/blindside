@@ -13,6 +13,7 @@
 #import "NSObject+Blindside.h"
 #import "NSObject+BlindsidePrivate.h"
 #import "BSUtils.h"
+#import "BSDynamicKey.h"
 #import <objc/runtime.h>
 
 static NSString *const BSNoProviderException = @"BSNoProviderException";

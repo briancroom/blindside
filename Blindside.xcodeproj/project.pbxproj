@@ -221,6 +221,17 @@
 		AEBA4F1B1C4D628800C2FF80 /* NSObject+BlindsidePrivate.m in Sources */ = {isa = PBXBuildFile; fileRef = AEBA4F131C4D628800C2FF80 /* NSObject+BlindsidePrivate.m */; };
 		AEBA4F1C1C4D628800C2FF80 /* NSObject+BlindsidePrivate.m in Sources */ = {isa = PBXBuildFile; fileRef = AEBA4F131C4D628800C2FF80 /* NSObject+BlindsidePrivate.m */; };
 		AEBA4F1D1C4D628800C2FF80 /* NSObject+BlindsidePrivate.m in Sources */ = {isa = PBXBuildFile; fileRef = AEBA4F131C4D628800C2FF80 /* NSObject+BlindsidePrivate.m */; };
+		AEC345191CE682F2009E36B0 /* BSDynamicKey.h in Headers */ = {isa = PBXBuildFile; fileRef = AEC345181CE682F2009E36B0 /* BSDynamicKey.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AEC3451A1CE682F2009E36B0 /* BSDynamicKey.h in Headers */ = {isa = PBXBuildFile; fileRef = AEC345181CE682F2009E36B0 /* BSDynamicKey.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AEC3451B1CE682F2009E36B0 /* BSDynamicKey.h in Headers */ = {isa = PBXBuildFile; fileRef = AEC345181CE682F2009E36B0 /* BSDynamicKey.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AEC3451C1CE682F2009E36B0 /* BSDynamicKey.h in Headers */ = {isa = PBXBuildFile; fileRef = AEC345181CE682F2009E36B0 /* BSDynamicKey.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AEC3452F1CE682FC009E36B0 /* BSDynamicKey.h in Copy headers to framework */ = {isa = PBXBuildFile; fileRef = AEC345181CE682F2009E36B0 /* BSDynamicKey.h */; };
+		AEC345301CE682FC009E36B0 /* BSDynamicKey.h in Headers */ = {isa = PBXBuildFile; fileRef = AEC345181CE682F2009E36B0 /* BSDynamicKey.h */; };
+		AEC345321CE683EB009E36B0 /* BSDynamicKey.m in Sources */ = {isa = PBXBuildFile; fileRef = AEC345311CE683EB009E36B0 /* BSDynamicKey.m */; };
+		AEC345331CE683EB009E36B0 /* BSDynamicKey.m in Sources */ = {isa = PBXBuildFile; fileRef = AEC345311CE683EB009E36B0 /* BSDynamicKey.m */; };
+		AEC345341CE683EB009E36B0 /* BSDynamicKey.m in Sources */ = {isa = PBXBuildFile; fileRef = AEC345311CE683EB009E36B0 /* BSDynamicKey.m */; };
+		AEC345351CE683EB009E36B0 /* BSDynamicKey.m in Sources */ = {isa = PBXBuildFile; fileRef = AEC345311CE683EB009E36B0 /* BSDynamicKey.m */; };
+		AEC345361CE683EB009E36B0 /* BSDynamicKey.m in Sources */ = {isa = PBXBuildFile; fileRef = AEC345311CE683EB009E36B0 /* BSDynamicKey.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -402,6 +413,7 @@
 			dstSubfolderSpec = 0;
 			files = (
 				29997B651505EE2C00C12110 /* BSInjector.h in Copy headers to framework */,
+				AEC3452F1CE682FC009E36B0 /* BSDynamicKey.h in Copy headers to framework */,
 				29997B671505EE2C00C12110 /* BSModule.h in Copy headers to framework */,
 				29997B681505EE2C00C12110 /* BSProvider.h in Copy headers to framework */,
 				29997B691505EE2C00C12110 /* BSInitializer.h in Copy headers to framework */,
@@ -507,6 +519,8 @@
 		AE4864BD1B066F11005DB302 /* Blindside.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Blindside.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEBA4F121C4D628800C2FF80 /* NSObject+BlindsidePrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+BlindsidePrivate.h"; sourceTree = "<group>"; };
 		AEBA4F131C4D628800C2FF80 /* NSObject+BlindsidePrivate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSObject+BlindsidePrivate.m"; path = "Source/NSObject+BlindsidePrivate.m"; sourceTree = "<group>"; };
+		AEC345181CE682F2009E36B0 /* BSDynamicKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSDynamicKey.h; sourceTree = "<group>"; };
+		AEC345311CE683EB009E36B0 /* BSDynamicKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BSDynamicKey.m; path = Source/BSDynamicKey.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -587,6 +601,7 @@
 				299EA6AA155CDD2C0006C5A4 /* Blindside.m */,
 				29D7FE84153EAEF000C8C4E7 /* BSBlockProvider.m */,
 				299EA6AB155CDD2C0006C5A4 /* BSClassProvider.m */,
+				AEC345311CE683EB009E36B0 /* BSDynamicKey.m */,
 				29997B0E1505D94200C12110 /* BSInitializer.m */,
 				29997B0F1505D94200C12110 /* BSInitializerProvider.m */,
 				29997A771502C48B00C12110 /* BSInjectorImpl.m */,
@@ -715,6 +730,7 @@
 				29997AB41505D04600C12110 /* Blindside.h */,
 				29B50683152583840035D197 /* BSBinder.h */,
 				294B3C311522C84E001A69D3 /* BSBlockProvider.h */,
+				AEC345181CE682F2009E36B0 /* BSDynamicKey.h */,
 				29997AFF1505D8A600C12110 /* BSInitializer.h */,
 				29997B061505D8FE00C12110 /* BSInjector.h */,
 				29997B081505D8FE00C12110 /* BSModule.h */,
@@ -796,6 +812,7 @@
 				29997B5B1505EC4F00C12110 /* BSInitializer.h in Headers */,
 				29997B5C1505EC4F00C12110 /* BSInitializerProvider.h in Headers */,
 				29997B5D1505EC4F00C12110 /* Blindside.h in Headers */,
+				AEC345301CE682FC009E36B0 /* BSDynamicKey.h in Headers */,
 				29C9675B1508744900356446 /* NSObject+Blindside.h in Headers */,
 				29C967681508919400356446 /* BSScope.h in Headers */,
 				29C967D21509BF1100356446 /* BSNull.h in Headers */,
@@ -823,6 +840,7 @@
 				29997B0B1505D8FE00C12110 /* BSInstanceProvider.h in Headers */,
 				29997B0C1505D8FE00C12110 /* BSModule.h in Headers */,
 				29997B0D1505D8FE00C12110 /* BSProvider.h in Headers */,
+				AEC345191CE682F2009E36B0 /* BSDynamicKey.h in Headers */,
 				29C9675A1508744900356446 /* NSObject+Blindside.h in Headers */,
 				29C967671508919400356446 /* BSScope.h in Headers */,
 				29C967D11509BF1100356446 /* BSNull.h in Headers */,
@@ -850,6 +868,7 @@
 				3420FD111BAA2BF200AF22F0 /* BSProperty.h in Headers */,
 				3420FD061BAA2BE700AF22F0 /* BSNull.h in Headers */,
 				3420FD041BAA2BE700AF22F0 /* BSInjector.h in Headers */,
+				AEC3451C1CE682F2009E36B0 /* BSDynamicKey.h in Headers */,
 				3420FD0A1BAA2BE700AF22F0 /* BSScope.h in Headers */,
 				3420FD101BAA2BF200AF22F0 /* BSInstanceProvider.h in Headers */,
 				3420FD001BAA2BE700AF22F0 /* Blindside.h in Headers */,
@@ -877,6 +896,7 @@
 				34E710CA1B9F86190088AB71 /* BSProperty.h in Headers */,
 				34E710C81B9F86190088AB71 /* BSModule.h in Headers */,
 				34E710BF1B9F86100088AB71 /* Blindside.h in Headers */,
+				AEC3451B1CE682F2009E36B0 /* BSDynamicKey.h in Headers */,
 				34E710CC1B9F86190088AB71 /* BSPropertySet.h in Headers */,
 				34E710CF1B9F86190088AB71 /* NSObject+Blindside.h in Headers */,
 				34E710C61B9F86190088AB71 /* BSInjectorImpl.h in Headers */,
@@ -904,6 +924,7 @@
 				AE4864DC1B066F35005DB302 /* BSInjector.h in Headers */,
 				AE4864DE1B066F35005DB302 /* BSInstanceProvider.h in Headers */,
 				AE4864DF1B066F35005DB302 /* BSModule.h in Headers */,
+				AEC3451A1CE682F2009E36B0 /* BSDynamicKey.h in Headers */,
 				AE4864E21B066F35005DB302 /* BSProvider.h in Headers */,
 				AE4864E61B066F35005DB302 /* NSObject+Blindside.h in Headers */,
 				AE4864E51B066F35005DB302 /* BSSingleton.h in Headers */,
@@ -1405,6 +1426,7 @@
 				29D7FE8D153EAEF000C8C4E7 /* BSProperty.m in Sources */,
 				29D7FE91153EAEF000C8C4E7 /* BSPropertySet.m in Sources */,
 				299EA6AE155CDD2C0006C5A4 /* Blindside.m in Sources */,
+				AEC345361CE683EB009E36B0 /* BSDynamicKey.m in Sources */,
 				299EA6B2155CDD2C0006C5A4 /* BSClassProvider.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1425,6 +1447,7 @@
 				29D7FE8B153EAEF000C8C4E7 /* BSProperty.m in Sources */,
 				29D7FE8F153EAEF000C8C4E7 /* BSPropertySet.m in Sources */,
 				299EA6AC155CDD2C0006C5A4 /* Blindside.m in Sources */,
+				AEC345321CE683EB009E36B0 /* BSDynamicKey.m in Sources */,
 				299EA6B0155CDD2C0006C5A4 /* BSClassProvider.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1459,6 +1482,7 @@
 				3420FCFC1BAA2B9C00AF22F0 /* BSProperty.m in Sources */,
 				3420FCF91BAA2B9C00AF22F0 /* BSInjectorImpl.m in Sources */,
 				3420FCF71BAA2B9C00AF22F0 /* BSInitializer.m in Sources */,
+				AEC345351CE683EB009E36B0 /* BSDynamicKey.m in Sources */,
 				3420FCFA1BAA2B9C00AF22F0 /* BSInstanceProvider.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1496,6 +1520,7 @@
 				34E710BB1B9F85DF0088AB71 /* BSProperty.m in Sources */,
 				34E710B81B9F85DF0088AB71 /* BSInjectorImpl.m in Sources */,
 				34E710B61B9F85DF0088AB71 /* BSInitializer.m in Sources */,
+				AEC345341CE683EB009E36B0 /* BSDynamicKey.m in Sources */,
 				34E710B91B9F85DF0088AB71 /* BSInstanceProvider.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1525,6 +1550,7 @@
 				AE4864EF1B06735F005DB302 /* BSProperty.m in Sources */,
 				AE4864F01B06735F005DB302 /* BSPropertySet.m in Sources */,
 				AE4864F11B06735F005DB302 /* BSSingleton.m in Sources */,
+				AEC345331CE683EB009E36B0 /* BSDynamicKey.m in Sources */,
 				AE4864F21B06735F005DB302 /* NSObject+Blindside.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

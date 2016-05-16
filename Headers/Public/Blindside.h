@@ -2,6 +2,7 @@
 
 #import "BSBinder.h"
 #import "BSBlockProvider.h"
+#import "BSDynamicKey.h"
 #import "BSInitializer.h"
 #import "BSInjector.h"
 #import "BSModule.h"
