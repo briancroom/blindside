@@ -19,7 +19,7 @@ class SwiftAddress : NSObject {
     var zip: String
 
     static override func bsInitializer() -> BSInitializer {
-        return BSInitializer(withClass: self, selector: "initWithStreet:city:state:zip:", argumentKeysArray: ["street", "city", "state", "zip"])
+        return BSInitializer(withClass: self, selector: #selector(SwiftAddress.init(street:city:state:zip:)), argumentKeysArray: ["street", "city", "state", "zip"])
     }
 
     init(street: String, city: SwiftCity, state: SwiftState, zip: String) {
@@ -37,7 +37,7 @@ class SwiftHouse : NSObject {
     weak var injector: BSInjector!
 
     static override func bsInitializer() -> BSInitializer {
-        return BSInitializer(withClass: self, selector: "initWithAddress:", argumentKeysArray: [SwiftAddress.self])
+        return BSInitializer(withClass: self, selector: #selector(SwiftHouse.init(address:)), argumentKeysArray: [SwiftAddress.self])
     }
 
     class override func bsProperties() -> BSPropertySet {
