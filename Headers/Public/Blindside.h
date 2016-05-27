@@ -1,5 +1,6 @@
 #import <Foundation/Foundation.h>
 
+#import "BSArgumentCollection.h"
 #import "BSBinder.h"
 #import "BSBlockProvider.h"
 #import "BSDynamicKey.h"

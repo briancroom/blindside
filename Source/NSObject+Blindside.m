@@ -7,7 +7,7 @@ static NSString *const BSMissingInitializerSpecificationException = @"BSMissingI
 
 @implementation NSObject(Blindside)
 
-+ (id)bsCreateWithArgs:(NSArray *)args injector:(id<BSInjector>)injector {
++ (id)bsCreateWithArgs:(id<BSArgumentCollection>)args injector:(id<BSInjector>)injector {
     id instance;
 
     @try {
@@ -25,7 +25,7 @@ static NSString *const BSMissingInitializerSpecificationException = @"BSMissingI
                     format:@"Unable to create an instance of class %@ using -init. Override +bsInitializer to tell Blindside which initializer to use.", NSStringFromClass(self)];
     }
 
-    [injector injectProperties:instance];
+    [injector injectProperties:instance withArguments:args];
     return instance;
 }
 

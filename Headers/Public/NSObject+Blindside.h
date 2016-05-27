@@ -1,6 +1,7 @@
 #import <Foundation/Foundation.h>
 
 #import "BSNullabilityCompat.h"
+#import "BSArgumentCollection.h"
 
 @class BSInitializer, BSPropertySet;
 @protocol BSInjector;
@@ -9,7 +10,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface NSObject(Blindside)
 
-+ (id)bsCreateWithArgs:(NSArray *)args injector:(id<BSInjector>)injector;
++ (id)bsCreateWithArgs:(id<BSArgumentCollection>)args injector:(id<BSInjector>)injector;
 
 + (nullable BSInitializer *)bsInitializer;
 

@@ -1,6 +1,7 @@
 #import "BSInitializer.h"
 #import "BSNull.h"
 #import "BSUtils.h"
+#import "BSDynamicKey+Private.h"
 
 #import <objc/runtime.h>
 
@@ -75,6 +76,20 @@ static NSString *const BSInvalidInitializerException = @"BSInvalidInitializerExc
     if (signatureArgCount != self.argumentKeys.count) {
         [NSException raise:BSInvalidInitializerException
                     format:@"%@selector %@ on class %@ has %lu argument key%@, when selector expects %lu argument%@", (self.canAlloc ? @"" : @"class "), NSStringFromSelector(self.selector), NSStringFromClass(self.type), (unsigned long int)self.argumentKeys.count, (self.argumentKeys.count == 1 ? @"" : @"s"), (unsigned long int)signatureArgCount, (signatureArgCount == 1 ? @"" : @"s"), nil];
+    }
+
+    NSUInteger dynamicArgCount = 0, dynamicKeyedArgCount = 0;
+    for (id argumentKey in self.argumentKeys) {
+        if ([argumentKey isKindOfClass:[BSDynamicKey class]]) {
+            dynamicArgCount++;
+            if ([argumentKey isKeywordKey]) {
+                dynamicKeyedArgCount++;
+            }
+        }
+    }
+
+    if (dynamicKeyedArgCount > 0 && dynamicArgCount != dynamicKeyedArgCount) {
+        [NSException raise:BSInvalidInitializerException format:@"It is not supported to use positional and keyed dynamic arguments on the initializer on class %@", NSStringFromClass(self.type)];
     }
 }
 

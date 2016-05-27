@@ -2,6 +2,7 @@
 
 @protocol BSInjector;
 @protocol BSBinder;
+@protocol BSArgumentCollection;
 @class BSInitializer;
 
 @protocol TestProtocolNonExistent;
@@ -85,7 +86,7 @@
 @interface ClassWithFactoryMethod : NSObject
 @property (nonatomic, copy) NSString *foo;
 @property (nonatomic, copy) NSString *bar;
-+ bsCreateWithArgs:(NSArray *)args injector:(id<BSInjector>)injector;
++ bsCreateWithArgs:(id<BSArgumentCollection>)args injector:(id<BSInjector>)injector;
 @end
 
 @class BogusClass;
@@ -136,4 +137,20 @@
 @interface ClassCDependsOnA : NSObject
 @property (nonatomic, strong) ClassADependsOnB *a;
 - (id)initWithA:(ClassADependsOnB *)a;
+@end
+
+
+@interface ClassWithKeyedArgs : NSObject
+@property (nonatomic, strong) NSString *foo;
+@property (nonatomic, strong) NSString *bar;
+@property (nonatomic, strong) NSString *baz;
+@end
+
+@interface ClassWithDependenciesThatUseKeyedArgs : NSObject
+@property (nonatomic, strong) ClassWithKeyedArgs *initializerDependency;
+@property (nonatomic, strong) ClassWithKeyedArgs *propertyDependency;
+@end
+
+@interface ClassWithDynamicProperty : NSObject
+@property (nonatomic, strong) NSString *foo;
 @end

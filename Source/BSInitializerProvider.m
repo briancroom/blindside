@@ -33,15 +33,19 @@ static NSString *const BSTooManyArguments = @"BSTooManyArguments";
     return self;
 }
 
-- (id)provide:(NSArray *)args injector:(id<BSInjector>)injector {
+- (id)provide:(id<BSArgumentCollection>)args injector:(id<BSInjector>)injector {
     NSMutableArray *mergedArgValues = [NSMutableArray array];
     NSUInteger argIndex = 0;
     for (id argKey in self.initializer.argumentKeys) {
-        id argValue = [injector getInstance:argKey];
+        id argValue = [injector getInstance:argKey withArguments:[args keyedArguments]];
 
-        if (argValue == nil && argIndex < args.count) {
-            argValue = [args objectAtIndex:argIndex];
+        if (argValue == nil && argIndex < args.indexedArgumentCount) {
+            argValue = args[argIndex];
             argIndex++;
+        }
+
+        if (argValue == nil) {
+            argValue = args[argKey];
         }
 
         if (argValue == nil) {
@@ -51,12 +55,12 @@ static NSString *const BSTooManyArguments = @"BSTooManyArguments";
         [mergedArgValues addObject:argValue];
     }
     
-    if (argIndex < args.count) {
+    if (argIndex < args.indexedArgumentCount) {
         [self raiseTooManyArgsException];
     }
 
     id newInstance = [self.initializer bsPerform:mergedArgValues];
-    [injector injectProperties:newInstance];
+    [injector injectProperties:newInstance withArguments:args];
 
     return newInstance;
 }

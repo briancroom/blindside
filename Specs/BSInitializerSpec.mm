@@ -40,12 +40,20 @@ describe(@"BSInitializer", ^{
         });
     });
 
+    context(@"when both positional and keyed dynamic args are specified", ^{
+        it(@"raises an exception", ^{
+            ^{
+                SEL goodSelector = @selector(initWithStreet:city:state:zip:);
+                [BSInitializer initializerWithClass:[Address class] selector:goodSelector argumentKeys:BS_DYNAMIC, BS_DYNAMIC_KEY(@"abc"), BS_NULL, BS_NULL, nil];
+            } should raise_exception();
+        });
+    });
+
     it(@"can initialize using class methods", ^{
         BSInitializer *initializer = [BSInitializer initializerWithClass:[Country class] classSelector:@selector(countryWithName:) argumentKeys:BS_DYNAMIC, nil];
         Country *usa = [initializer bsPerform:@[@"USA"]];
         usa should be_instance_of([Country class]);
         usa.name should equal(@"USA");
     });
-
 });
 SPEC_END

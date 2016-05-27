@@ -155,8 +155,8 @@ zip = zip_;
 @implementation ClassWithFactoryMethod 
 @synthesize foo = _foo, bar = _bar;
 
-+ bsCreateWithArgs:(NSArray *)args injector:(id<BSInjector>)injector {
-    NSString *foo = [args objectAtIndex:0];
++ bsCreateWithArgs:(id<BSArgumentCollection>)args injector:(id<BSInjector>)injector {
+    NSString *foo = args[0];
     NSString *bar = [injector getInstance:@"bar"];
     return [[ClassWithFactoryMethod alloc] initWithFoo:foo bar:bar];
 }
@@ -286,6 +286,60 @@ zip = zip_;
         self.a = a;
     }
     return self;
+}
+
+@end
+
+@implementation ClassWithKeyedArgs
+
++ (BSInitializer *)bsInitializer {
+    return [BSInitializer initializerWithClass:self
+                                      selector:@selector(initWithFoo:bar:baz:)
+                                  argumentKeys:BS_DYNAMIC_KEY(@"fooArg"), @"bar", BS_DYNAMIC_KEY(@"bazArg"), nil];
+}
+
+- (id)initWithFoo:(NSString *)foo
+              bar:(NSString *)bar
+              baz:(NSString *)baz {
+    if (self = [super init]) {
+        self.foo = foo;
+        self.bar = bar;
+        self.baz = baz;
+    }
+    return self;
+}
+
+@end
+
+@implementation ClassWithDependenciesThatUseKeyedArgs
+
++ (BSInitializer *)bsInitializer {
+    return [BSInitializer initializerWithClass:self
+                                      selector:@selector(initWithDependency:)
+                                  argumentKeys:[ClassWithKeyedArgs class], nil];
+}
+
++ (BSPropertySet *)bsProperties {
+    return [BSPropertySet propertySetWithClass:self
+                                 propertyNames:@"propertyDependency", nil];
+}
+
+- (id)initWithDependency:(ClassWithKeyedArgs *)dependency {
+    if (self = [super init]) {
+        self.initializerDependency = dependency;
+    }
+    return self;
+}
+
+@end
+
+@implementation ClassWithDynamicProperty
+
++ (BSPropertySet *)bsProperties {
+    BSPropertySet *properties = [BSPropertySet propertySetWithClass:self
+                                                      propertyNames:@"foo", nil];
+    [properties bindProperty:@"foo" toKey:BS_DYNAMIC_KEY(@"fooProperty")];
+    return properties;
 }
 
 @end

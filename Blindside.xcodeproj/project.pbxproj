@@ -183,6 +183,12 @@
 		AE03FC1F1B0A57DD00013784 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AE03FC1E1B0A57DD00013784 /* main.m */; };
 		AE03FC221B0A57DD00013784 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AE03FC211B0A57DD00013784 /* AppDelegate.m */; };
 		AE03FC421B0A580A00013784 /* Blindside.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE4864BD1B066F11005DB302 /* Blindside.framework */; };
+		AE11D2C51CF69D0900E7DE40 /* BSDynamicKey+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = AE11D2C41CF69D0900E7DE40 /* BSDynamicKey+Private.h */; };
+		AE11D2C61CF69D0900E7DE40 /* BSDynamicKey+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = AE11D2C41CF69D0900E7DE40 /* BSDynamicKey+Private.h */; };
+		AE11D2C71CF69D0900E7DE40 /* BSDynamicKey+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = AE11D2C41CF69D0900E7DE40 /* BSDynamicKey+Private.h */; };
+		AE11D2C81CF69D0900E7DE40 /* BSDynamicKey+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = AE11D2C41CF69D0900E7DE40 /* BSDynamicKey+Private.h */; };
+		AE11D2C91CF69D0900E7DE40 /* BSDynamicKey+Private.h in Headers */ = {isa = PBXBuildFile; fileRef = AE11D2C41CF69D0900E7DE40 /* BSDynamicKey+Private.h */; };
+		AE11D2CA1CF69D0900E7DE40 /* BSDynamicKey+Private.h in Copy headers to framework */ = {isa = PBXBuildFile; fileRef = AE11D2C41CF69D0900E7DE40 /* BSDynamicKey+Private.h */; };
 		AE4864D61B066F35005DB302 /* Blindside.h in Headers */ = {isa = PBXBuildFile; fileRef = 29997AB41505D04600C12110 /* Blindside.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AE4864D71B066F35005DB302 /* BSBinder.h in Headers */ = {isa = PBXBuildFile; fileRef = 29B50683152583840035D197 /* BSBinder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AE4864D81B066F35005DB302 /* BSBlockProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = 294B3C311522C84E001A69D3 /* BSBlockProvider.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -232,6 +238,17 @@
 		AEC345341CE683EB009E36B0 /* BSDynamicKey.m in Sources */ = {isa = PBXBuildFile; fileRef = AEC345311CE683EB009E36B0 /* BSDynamicKey.m */; };
 		AEC345351CE683EB009E36B0 /* BSDynamicKey.m in Sources */ = {isa = PBXBuildFile; fileRef = AEC345311CE683EB009E36B0 /* BSDynamicKey.m */; };
 		AEC345361CE683EB009E36B0 /* BSDynamicKey.m in Sources */ = {isa = PBXBuildFile; fileRef = AEC345311CE683EB009E36B0 /* BSDynamicKey.m */; };
+		AEC345381CE9F252009E36B0 /* BSArgumentCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = AEC345371CE9F252009E36B0 /* BSArgumentCollection.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AEC345391CE9F252009E36B0 /* BSArgumentCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = AEC345371CE9F252009E36B0 /* BSArgumentCollection.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AEC3453A1CE9F252009E36B0 /* BSArgumentCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = AEC345371CE9F252009E36B0 /* BSArgumentCollection.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AEC3453B1CE9F252009E36B0 /* BSArgumentCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = AEC345371CE9F252009E36B0 /* BSArgumentCollection.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		AEC3453C1CE9F252009E36B0 /* BSArgumentCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = AEC345371CE9F252009E36B0 /* BSArgumentCollection.h */; };
+		AEC3453D1CE9F252009E36B0 /* BSArgumentCollection.h in Copy headers to framework */ = {isa = PBXBuildFile; fileRef = AEC345371CE9F252009E36B0 /* BSArgumentCollection.h */; };
+		AEC3453F1CE9F2B8009E36B0 /* BSArgumentsCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = AEC3453E1CE9F2B8009E36B0 /* BSArgumentsCollection.m */; };
+		AEC345401CE9F2B8009E36B0 /* BSArgumentsCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = AEC3453E1CE9F2B8009E36B0 /* BSArgumentsCollection.m */; };
+		AEC345411CE9F2B8009E36B0 /* BSArgumentsCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = AEC3453E1CE9F2B8009E36B0 /* BSArgumentsCollection.m */; };
+		AEC345421CE9F2B8009E36B0 /* BSArgumentsCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = AEC3453E1CE9F2B8009E36B0 /* BSArgumentsCollection.m */; };
+		AEC345431CE9F2B8009E36B0 /* BSArgumentsCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = AEC3453E1CE9F2B8009E36B0 /* BSArgumentsCollection.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -412,10 +429,12 @@
 			dstPath = "${BUILD_DIR}/${CONFIGURATION}-iphoneuniversal/${PRODUCT_NAME}.framework/Headers";
 			dstSubfolderSpec = 0;
 			files = (
+				AEC3453D1CE9F252009E36B0 /* BSArgumentCollection.h in Copy headers to framework */,
 				29997B651505EE2C00C12110 /* BSInjector.h in Copy headers to framework */,
 				AEC3452F1CE682FC009E36B0 /* BSDynamicKey.h in Copy headers to framework */,
 				29997B671505EE2C00C12110 /* BSModule.h in Copy headers to framework */,
 				29997B681505EE2C00C12110 /* BSProvider.h in Copy headers to framework */,
+				AE11D2CA1CF69D0900E7DE40 /* BSDynamicKey+Private.h in Copy headers to framework */,
 				29997B691505EE2C00C12110 /* BSInitializer.h in Copy headers to framework */,
 				29997B6B1505EE2C00C12110 /* Blindside.h in Copy headers to framework */,
 				29C9675C1508744900356446 /* NSObject+Blindside.h in Copy headers to framework */,
@@ -516,11 +535,14 @@
 		AE03FC1D1B0A57DD00013784 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AE03FC1E1B0A57DD00013784 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		AE03FC211B0A57DD00013784 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		AE11D2C41CF69D0900E7DE40 /* BSDynamicKey+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BSDynamicKey+Private.h"; sourceTree = "<group>"; };
 		AE4864BD1B066F11005DB302 /* Blindside.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Blindside.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEBA4F121C4D628800C2FF80 /* NSObject+BlindsidePrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+BlindsidePrivate.h"; sourceTree = "<group>"; };
 		AEBA4F131C4D628800C2FF80 /* NSObject+BlindsidePrivate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSObject+BlindsidePrivate.m"; path = "Source/NSObject+BlindsidePrivate.m"; sourceTree = "<group>"; };
 		AEC345181CE682F2009E36B0 /* BSDynamicKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSDynamicKey.h; sourceTree = "<group>"; };
 		AEC345311CE683EB009E36B0 /* BSDynamicKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BSDynamicKey.m; path = Source/BSDynamicKey.m; sourceTree = "<group>"; };
+		AEC345371CE9F252009E36B0 /* BSArgumentCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSArgumentCollection.h; sourceTree = "<group>"; };
+		AEC3453E1CE9F2B8009E36B0 /* BSArgumentsCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BSArgumentsCollection.m; path = Source/BSArgumentsCollection.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -599,6 +621,7 @@
 			isa = PBXGroup;
 			children = (
 				299EA6AA155CDD2C0006C5A4 /* Blindside.m */,
+				AEC3453E1CE9F2B8009E36B0 /* BSArgumentsCollection.m */,
 				29D7FE84153EAEF000C8C4E7 /* BSBlockProvider.m */,
 				299EA6AB155CDD2C0006C5A4 /* BSClassProvider.m */,
 				AEC345311CE683EB009E36B0 /* BSDynamicKey.m */,
@@ -728,6 +751,7 @@
 			isa = PBXGroup;
 			children = (
 				29997AB41505D04600C12110 /* Blindside.h */,
+				AEC345371CE9F252009E36B0 /* BSArgumentCollection.h */,
 				29B50683152583840035D197 /* BSBinder.h */,
 				294B3C311522C84E001A69D3 /* BSBlockProvider.h */,
 				AEC345181CE682F2009E36B0 /* BSDynamicKey.h */,
@@ -749,6 +773,7 @@
 			isa = PBXGroup;
 			children = (
 				6172C027155B98E900348C4E /* BSClassProvider.h */,
+				AE11D2C41CF69D0900E7DE40 /* BSDynamicKey+Private.h */,
 				29997B001505D8A600C12110 /* BSInitializerProvider.h */,
 				61DC9F771541FA82009DDFA6 /* BSInjectorImpl.h */,
 				29997B071505D8FE00C12110 /* BSInstanceProvider.h */,
@@ -810,6 +835,7 @@
 				29997B591505EC4F00C12110 /* BSModule.h in Headers */,
 				29997B5A1505EC4F00C12110 /* BSProvider.h in Headers */,
 				29997B5B1505EC4F00C12110 /* BSInitializer.h in Headers */,
+				AEC3453C1CE9F252009E36B0 /* BSArgumentCollection.h in Headers */,
 				29997B5C1505EC4F00C12110 /* BSInitializerProvider.h in Headers */,
 				29997B5D1505EC4F00C12110 /* Blindside.h in Headers */,
 				AEC345301CE682FC009E36B0 /* BSDynamicKey.h in Headers */,
@@ -825,6 +851,7 @@
 				61DC9F791541FA8E009DDFA6 /* BSInjectorImpl.h in Headers */,
 				6172C029155B990000348C4E /* BSClassProvider.h in Headers */,
 				3453B89C1B4F7B0E00026E19 /* BSNullabilityCompat.h in Headers */,
+				AE11D2C91CF69D0900E7DE40 /* BSDynamicKey+Private.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -838,6 +865,7 @@
 				29997B041505D8A600C12110 /* BSInitializerProvider.h in Headers */,
 				29997B0A1505D8FE00C12110 /* BSInjector.h in Headers */,
 				29997B0B1505D8FE00C12110 /* BSInstanceProvider.h in Headers */,
+				AEC345381CE9F252009E36B0 /* BSArgumentCollection.h in Headers */,
 				29997B0C1505D8FE00C12110 /* BSModule.h in Headers */,
 				29997B0D1505D8FE00C12110 /* BSProvider.h in Headers */,
 				AEC345191CE682F2009E36B0 /* BSDynamicKey.h in Headers */,
@@ -853,6 +881,7 @@
 				61DC9F781541FA8D009DDFA6 /* BSInjectorImpl.h in Headers */,
 				6172C028155B98FF00348C4E /* BSClassProvider.h in Headers */,
 				3453B89D1B4F7B1600026E19 /* BSNullabilityCompat.h in Headers */,
+				AE11D2C51CF69D0900E7DE40 /* BSDynamicKey+Private.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -866,6 +895,7 @@
 				3420FD051BAA2BE700AF22F0 /* BSModule.h in Headers */,
 				3420FD0E1BAA2BF200AF22F0 /* BSInitializerProvider.h in Headers */,
 				3420FD111BAA2BF200AF22F0 /* BSProperty.h in Headers */,
+				AEC3453B1CE9F252009E36B0 /* BSArgumentCollection.h in Headers */,
 				3420FD061BAA2BE700AF22F0 /* BSNull.h in Headers */,
 				3420FD041BAA2BE700AF22F0 /* BSInjector.h in Headers */,
 				AEC3451C1CE682F2009E36B0 /* BSDynamicKey.h in Headers */,
@@ -881,6 +911,7 @@
 				3420FD081BAA2BE700AF22F0 /* BSPropertySet.h in Headers */,
 				3420FD011BAA2BE700AF22F0 /* BSBinder.h in Headers */,
 				3420FD0D1BAA2BF200AF22F0 /* BSClassProvider.h in Headers */,
+				AE11D2C81CF69D0900E7DE40 /* BSDynamicKey+Private.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -894,6 +925,7 @@
 				34E710C11B9F86190088AB71 /* BSBlockProvider.h in Headers */,
 				34E710C21B9F86190088AB71 /* BSClassProvider.h in Headers */,
 				34E710CA1B9F86190088AB71 /* BSProperty.h in Headers */,
+				AEC3453A1CE9F252009E36B0 /* BSArgumentCollection.h in Headers */,
 				34E710C81B9F86190088AB71 /* BSModule.h in Headers */,
 				34E710BF1B9F86100088AB71 /* Blindside.h in Headers */,
 				AEC3451B1CE682F2009E36B0 /* BSDynamicKey.h in Headers */,
@@ -909,6 +941,7 @@
 				34E710CB1B9F86190088AB71 /* BSProvider.h in Headers */,
 				34E710C01B9F86190088AB71 /* BSBinder.h in Headers */,
 				34E710D01B9F86190088AB71 /* BSNullabilityCompat.h in Headers */,
+				AE11D2C71CF69D0900E7DE40 /* BSDynamicKey+Private.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -922,6 +955,7 @@
 				AE4864DA1B066F35005DB302 /* BSInitializer.h in Headers */,
 				AE4864DB1B066F35005DB302 /* BSInitializerProvider.h in Headers */,
 				AE4864DC1B066F35005DB302 /* BSInjector.h in Headers */,
+				AEC345391CE9F252009E36B0 /* BSArgumentCollection.h in Headers */,
 				AE4864DE1B066F35005DB302 /* BSInstanceProvider.h in Headers */,
 				AE4864DF1B066F35005DB302 /* BSModule.h in Headers */,
 				AEC3451A1CE682F2009E36B0 /* BSDynamicKey.h in Headers */,
@@ -937,6 +971,7 @@
 				AE4864DD1B066F35005DB302 /* BSInjectorImpl.h in Headers */,
 				AE4864D91B066F35005DB302 /* BSClassProvider.h in Headers */,
 				3453B89E1B4F7B1A00026E19 /* BSNullabilityCompat.h in Headers */,
+				AE11D2C61CF69D0900E7DE40 /* BSDynamicKey+Private.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1424,6 +1459,7 @@
 				29C967DF1509BF2100356446 /* BSSingleton.m in Sources */,
 				29D7FE89153EAEF000C8C4E7 /* BSBlockProvider.m in Sources */,
 				29D7FE8D153EAEF000C8C4E7 /* BSProperty.m in Sources */,
+				AEC345431CE9F2B8009E36B0 /* BSArgumentsCollection.m in Sources */,
 				29D7FE91153EAEF000C8C4E7 /* BSPropertySet.m in Sources */,
 				299EA6AE155CDD2C0006C5A4 /* Blindside.m in Sources */,
 				AEC345361CE683EB009E36B0 /* BSDynamicKey.m in Sources */,
@@ -1445,6 +1481,7 @@
 				29C967DD1509BF2100356446 /* BSSingleton.m in Sources */,
 				29D7FE87153EAEF000C8C4E7 /* BSBlockProvider.m in Sources */,
 				29D7FE8B153EAEF000C8C4E7 /* BSProperty.m in Sources */,
+				AEC3453F1CE9F2B8009E36B0 /* BSArgumentsCollection.m in Sources */,
 				29D7FE8F153EAEF000C8C4E7 /* BSPropertySet.m in Sources */,
 				299EA6AC155CDD2C0006C5A4 /* Blindside.m in Sources */,
 				AEC345321CE683EB009E36B0 /* BSDynamicKey.m in Sources */,
@@ -1480,6 +1517,7 @@
 				3420FCFD1BAA2B9C00AF22F0 /* BSPropertySet.m in Sources */,
 				3420FCF81BAA2B9C00AF22F0 /* BSInitializerProvider.m in Sources */,
 				3420FCFC1BAA2B9C00AF22F0 /* BSProperty.m in Sources */,
+				AEC345421CE9F2B8009E36B0 /* BSArgumentsCollection.m in Sources */,
 				3420FCF91BAA2B9C00AF22F0 /* BSInjectorImpl.m in Sources */,
 				3420FCF71BAA2B9C00AF22F0 /* BSInitializer.m in Sources */,
 				AEC345351CE683EB009E36B0 /* BSDynamicKey.m in Sources */,
@@ -1518,6 +1556,7 @@
 				34E710BC1B9F85DF0088AB71 /* BSPropertySet.m in Sources */,
 				34E710B71B9F85DF0088AB71 /* BSInitializerProvider.m in Sources */,
 				34E710BB1B9F85DF0088AB71 /* BSProperty.m in Sources */,
+				AEC345411CE9F2B8009E36B0 /* BSArgumentsCollection.m in Sources */,
 				34E710B81B9F85DF0088AB71 /* BSInjectorImpl.m in Sources */,
 				34E710B61B9F85DF0088AB71 /* BSInitializer.m in Sources */,
 				AEC345341CE683EB009E36B0 /* BSDynamicKey.m in Sources */,
@@ -1548,6 +1587,7 @@
 				AE4864ED1B06735F005DB302 /* BSInstanceProvider.m in Sources */,
 				AE4864EE1B06735F005DB302 /* BSNull.m in Sources */,
 				AE4864EF1B06735F005DB302 /* BSProperty.m in Sources */,
+				AEC345401CE9F2B8009E36B0 /* BSArgumentsCollection.m in Sources */,
 				AE4864F01B06735F005DB302 /* BSPropertySet.m in Sources */,
 				AE4864F11B06735F005DB302 /* BSSingleton.m in Sources */,
 				AEC345331CE683EB009E36B0 /* BSDynamicKey.m in Sources */,

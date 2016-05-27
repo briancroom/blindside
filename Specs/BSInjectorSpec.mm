@@ -201,7 +201,7 @@ describe(@"BSInjector", ^{
         [injector bind:[Address class] toInstance:BS_NULL];
         
         garage = [[Garage alloc] init];
-        [injector bind:[Garage class] toBlock:^(NSArray *args, id<BSInjector> injector){
+        [injector bind:[Garage class] toBlock:^(id<BSArgumentCollection> args, id<BSInjector> injector){
             return garage;
         }];
 
@@ -298,7 +298,7 @@ describe(@"BSInjector", ^{
         });
     });
 
-    describe(@"getInstance:withArgs:", ^{
+    describe(@"getting an instance with positional arguments", ^{
         __block State *state;
         __block City *city;
         __block NSString *street;
@@ -356,7 +356,34 @@ describe(@"BSInjector", ^{
         });
     });
 
-    describe(@"injectProperties:", ^{
+    describe(@"getting an instance with keyed arguments", ^{
+        beforeEach(^{
+            [injector bind:@"bar" toInstance:@"Bar"];
+        });
+
+        it(@"injects the provided args along with existing bindings", ^{
+            ClassWithKeyedArgs *instance = [injector getInstance:[ClassWithKeyedArgs class]
+                                                   withArguments:@{
+                                                                   @"fooArg": @"Foo",
+                                                                   @"bazArg": @"Baz"
+                                                                   }];
+            instance.foo should equal(@"Foo");
+            instance.bar should equal(@"Bar");
+            instance.baz should equal(@"Baz");
+        });
+
+        it(@"makes the keyed args available to transitive dependencies", ^{
+            ClassWithDependenciesThatUseKeyedArgs *instance = [injector getInstance:[ClassWithDependenciesThatUseKeyedArgs class]
+                                                                      withArguments:@{
+                                                                                      @"fooArg": @"Foo",
+                                                                                      @"bazArg": @"Baz"
+                                                                                      }];
+            instance.initializerDependency.foo should equal(@"Foo");
+            instance.propertyDependency.foo should equal(@"Foo");
+        });
+    });
+
+    describe(@"injecting properties", ^{
         __block Mansion *mansion;
         beforeEach(^{
             mansion = [[Mansion alloc] init];
@@ -391,6 +418,15 @@ describe(@"BSInjector", ^{
                     [injector bind:@protocol(TestAliasProtocol) toClass:[TestAliasProtocolImpl class]];
                     [injector injectProperties:objectWithNilInjectionKey];
                 } should_not raise_exception().with_name(@"BSNilInjectionKeyException");
+            });
+        });
+
+        context(@"when the object receiving injected property values uses a dynamic key", ^{
+            it(@"should inject the keyed argument value", ^{
+                ClassWithDynamicProperty *instance = [ClassWithDynamicProperty new];
+                [injector injectProperties:instance withArguments:@{ @"fooProperty": @"bar" }];
+
+                instance.foo should equal(@"bar");
             });
         });
     });

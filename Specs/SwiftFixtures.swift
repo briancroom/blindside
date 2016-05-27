@@ -71,7 +71,7 @@ class SwiftClassWithFactoryMethod : NSObject {
     var foo: String
     var bar: String
 
-    static override func bsCreateWithArgs(args: [AnyObject], injector: BSInjector) -> AnyObject {
+    static override func bsCreateWithArgs(args: BSArgumentCollection, injector: BSInjector) -> AnyObject {
         return SwiftClassWithFactoryMethod(foo: args[0] as! String, bar: injector.getInstance("bar") as! String)
     }
 

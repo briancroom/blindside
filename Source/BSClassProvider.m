@@ -23,8 +23,8 @@
     return self;
 }
 
-- (id)provide:(NSArray *)args injector:(id<BSInjector>)injector {
-    return [injector getInstance:self.klass];
+- (id)provide:(id<BSArgumentCollection>)args injector:(id<BSInjector>)injector {
+    return [injector getInstance:self.klass withArguments:args];
 }
 
 @end

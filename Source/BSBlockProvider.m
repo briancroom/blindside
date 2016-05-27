@@ -27,7 +27,7 @@
     return self;
 }
 
-- (id)provide:(NSArray *)args injector:(id<BSInjector>)injector{
+- (id)provide:(id<BSArgumentCollection>)args injector:(id<BSInjector>)injector{
     return self.block(args, injector);
 }
 

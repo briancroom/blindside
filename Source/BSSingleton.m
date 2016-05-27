@@ -19,7 +19,7 @@
     return self;
 }
 
-- (id)provide:(NSArray *)args injector:(id<BSInjector>)injector {
+- (id)provide:(id<BSArgumentCollection>)args injector:(id<BSInjector>)injector {
     if (self.instance == nil) {
         self.instance = [self.source provide:args injector:injector];
         self.source = nil;

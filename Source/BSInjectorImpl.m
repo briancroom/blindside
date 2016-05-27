@@ -26,9 +26,6 @@ static NSString *const BSNilInjectionKeyException = @"BSNilInjectionKeyException
 @property(nonatomic, strong) NSMutableDictionary *providers;
 @property(nonatomic, strong) NSMutableDictionary *scopes;
 
-- (void)injectInjector:(id)object;
-- (id)getInstance:(id)key withArgArray:(NSArray *)args;
-
 @end
 
 @implementation BSInjectorImpl
@@ -101,6 +98,10 @@ static NSString *const BSNilInjectionKeyException = @"BSNilInjectionKeyException
 }
 
 - (id)getInstance:(id)key withArgArray:(NSArray *)args {
+    return [self getInstance:key withArguments:args];
+}
+
+- (id)getInstance:(id)key withArguments:(id<BSArgumentCollection>)args {
     id<BSProvider> provider = [self providerForKey:key];
     id<BSScope> scope = [self scopeForKey:key];
 
@@ -108,7 +109,7 @@ static NSString *const BSNilInjectionKeyException = @"BSNilInjectionKeyException
         provider = [scope scope:provider];
     }
 
-    if (provider == nil && ![BS_DYNAMIC isEqual:key]) {
+    if (provider == nil && ![key isKindOfClass:[BSDynamicKey class]]) {
         [NSException raise:BSNoProviderException format:@"Injector could not getInstance for key (%@) with args %@", [key bsKeyDescription], args];
     }
 
@@ -121,13 +122,19 @@ static NSString *const BSNilInjectionKeyException = @"BSNilInjectionKeyException
 }
 
 - (void)injectProperties:(id)instance {
+    [self injectProperties:instance withArguments:@{}];
+}
+
+- (void)injectProperties:(id)instance withArguments:(id<BSArgumentCollection>)args {
     if ([[instance class] respondsToSelector:@selector(bsProperties)]) {
+        args = [args keyedArguments];
+
         BSPropertySet *propertySet = [[instance class] performSelector:@selector(bsProperties)];
         for (BSProperty *property in propertySet) {
             if (!property.injectionKey) {
                 [NSException raise:BSNilInjectionKeyException format:@"Property: %@ on class: %@ returned nil injection key", property.propertyNameString, NSStringFromClass([instance class])];
             }
-            id value = [self getInstance:property.injectionKey];
+            id value = [self getInstance:property.injectionKey withArguments:[args keyedArguments]];
             value = (value==[BSNull null]) ? nil : value;
 
             [instance setValue:value forKey:property.propertyNameString];
@@ -159,7 +166,7 @@ static NSString *const BSNilInjectionKeyException = @"BSNilInjectionKeyException
     
     if (provider == nil && [key respondsToSelector:@selector(bsCreateWithArgs:injector:)]) {
         __weak id this = self;
-        provider = [BSBlockProvider providerWithBlock:^id(NSArray *args, id<BSInjector> injector) {
+        provider = [BSBlockProvider providerWithBlock:^id(id<BSArgumentCollection> args, id<BSInjector> injector) {
             return [key performSelector:@selector(bsCreateWithArgs:injector:) withObject:args withObject:this];
         }];
     }

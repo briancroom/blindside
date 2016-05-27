@@ -78,7 +78,7 @@ NS_ASSUME_NONNULL_BEGIN
    * - (void)configure(id<BSBinder>binder {
    *   __block NSString *lastName = @"Thompson";
    *
-   *   [binder bind:@"fullName" toBlock:^id()(NSArray *args, id<BSInjector>injector){
+   *   [binder bind:@"fullName" toBlock:^id()(id<BSArgumentCollection> args, id<BSInjector>injector){
    *        NSString *firstName = args[0];
    *        return [NSString stringWithFormat:@"%@ %@", firstName, lastName, nil];
    *   }];
